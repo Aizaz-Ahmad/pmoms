@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registered Teams - PUCIT Mini Olympics Management System</title>
+    <link rel="shortcut icon" href="favicon.jpeg" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="main-nav">
+      <div id="main-logo" class="ml-5">
+        <h1><span>PMO</span>MS</h1>
+      </div>
+      <div class="nav-links w-25 h-100 ml-auto mr-5">
+        <ul
+          style="list-style-type: none;"
+          class="d-flex justify-content-around align-items-center h-100 text-white"
+        >
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="" id="profile-link">PROFILE</a></li>
+          <li><a href="login.html">LOGOUT</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid" style="height: 88vh; padding-left: 0;">
+      <div class="row h-100">
+        <div class="col-3 h-100 side-nav">
+          <ul class="mt-5">
+            <li data-display="registration">
+              <a href="verifyteams.html">Verify Teams</a>
+            </li>
+            <li data-display="student">
+              <a href="registergame.html">Register For Games</a>
+            </li>
+            <li data-display="student">
+              <a href="registeredgames.html">Registered Games</a>
+            </li>
+            <li data-display="president">
+              <a href="addcordinator.html">Add Coordinator</a>
+            </li>
+            <li data-display="president">
+              <a href="addregistrationteam.html">Add Registration Team</a>
+            </li>
+            <li data-display="coordinator">
+              <a href="addfixtures.html">Add Fixtures</a>
+            </li>
+            <li data-display="coordinator">
+              <a href="addresults.html">Add Results</a>
+            </li>
+            <li data-display="student,coordinator">
+              <a href="viewfixture.html">Fixtures</a>
+            </li>
+            <li data-display="president,registration">
+              <a class="text-dark" href="registeredstudents.html"
+                >Registered Teams</a
+              >
+            </li>
+            <li data-display="coordinator,student,registration">
+              <a href="registrationstatus.html">Registration Status</a>
+            </li>
+            <li data-display="president,coordinator,student,registration">
+              <a href="games.html">View Games</a>
+            </li>
+            <li data-display="president,coordinator,student,registration">
+              <a href="coordinators.html">Coordinators</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-9 h-100 p-5" style="overflow-y: scroll;">
+          <h2>Registered Teams</h2>
+          <table class="mt-5 table table-bordered table-hover">
+            <thead style="text-align: center;">
+              <tr>
+                <th>Sr. No</th>
+                <th>Game ID</th>
+                <th>Game Name</th>
+                <th>Team Name</th>
+                <th>Captain</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>Cricket</td>
+                <td>Ghauri</td>
+                <td>Abdullah</td>
+                <td>
+                  <button class="btn btn-main btn-block btn-sm">Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>Football</td>
+                <td>Titans</td>
+                <td>Hamza</td>
+                <td>
+                  <button class="btn btn-main btn-block btn-sm">Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>9</td>
+                <td>Ludo Single</td>
+                <td>Fangs</td>
+                <td>Haider</td>
+                <td>
+                  <button class="btn btn-main btn-block btn-sm">Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let url = new URLSearchParams(window.location.search);
+    let user = url.get('user');
+    let links = document.querySelectorAll('[data-display]');
+    links.forEach(link => {
+      let displayTo = link.getAttribute('data-display').split(',');
+      if (!displayTo.some(display => display == user))
+        link.style.display = 'none';
+      let href = link.getElementsByTagName('a')[0];
+      href.setAttribute('href', href.getAttribute('href') + '?user=' + user);
+    });
+    document
+      .getElementById('profile-link')
+      .setAttribute('href', 'profile.html?user=' + user);
+  </script>
+</html>
